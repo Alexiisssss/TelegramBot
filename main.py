@@ -12,7 +12,7 @@ from database import create_table, update_quiz_index, get_quiz_index, count_play
 
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN = '7155442129:AAGAVNc733wOtV-MWbGF3oy1S5EJ_SvYl8g'
+API_TOKEN = 'YOUR_API'
 
 bot = Bot(token=API_TOKEN)
 

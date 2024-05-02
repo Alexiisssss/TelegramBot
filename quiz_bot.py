@@ -5,6 +5,8 @@ from aiogram import F
 from command import Command
 import json
 import database
+from main import cmd_help, dp, bot, cmd_statistics2, cmd_help2
+
 
 # Function to generate keyboard for quiz options
 def generate_options_keyboard(answer_options, right_answer):
@@ -60,4 +62,7 @@ async def get_quiz_statistics():
 def setup(dp: Dispatcher):
     dp.register_message_handler(new_quiz, Command("quiz"), F.text == "Начать игру")
     dp.register_message_handler(cmd_statistics, Command("stats"))
-    dp.register_message_handler(cmd_statistics, Command("help"))
+    dp.register_message_handler(cmd_help, Command("help"))
+    dp.register_message_handler(cmd_help2, Command("help"), F.text == "Помощь")
+    dp.register_message_handler(cmd_statistics2, Command("stats"), F.text == "Ститистика")
+

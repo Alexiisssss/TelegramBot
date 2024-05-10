@@ -13,7 +13,11 @@ from database import create_table, update_quiz_index, get_quiz_index, count_play
 
 logging.basicConfig(level=logging.INFO)
 
+<<<<<<< HEAD
 API_TOKEN = '7155442129:AAEaiRPW1qQ5YjEd6kx8NLbT9PI-k6jaAdw'
+=======
+API_TOKEN = 'YOUR_API'
+>>>>>>> d835c690541fe246ecbff7b2ce170dd85b50b31c
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot=bot, webhook=False)

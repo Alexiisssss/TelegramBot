@@ -1,7 +1,6 @@
 import asyncio
 import logging
 
-
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
@@ -9,20 +8,15 @@ from aiogram import F
 import json
 from aiogram.enums import ParseMode
 
-
-
 from database import create_table, update_quiz_index, get_quiz_index, count_players, get_max_score, update_quiz_score, \
     get_player_scores, get_player_score
 
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN = '7155442129:AAGAVNc733wOtV-MWbGF3oy1S5EJ_SvYl8g'
+API_TOKEN = '7155442129:AAEaiRPW1qQ5YjEd6kx8NLbT9PI-k6jaAdw'
 
 bot = Bot(token=API_TOKEN)
-
-dp = Dispatcher()
-
-DB_NAME = 'quiz_bot.db'
+dp = Dispatcher(bot=bot, webhook=False)
 
 total_correct_answers = 0
 
@@ -159,6 +153,7 @@ async def get_statistics(user_id=None):
 
     return f"Статистика игроков:\n\nВсего игроков: {total_players}\nМаксимальное количество правильных ответов: {max_score}\n\n{player_stats}"
 
+
 @dp.message(Command("help"))
 async def cmd_help(message: types.Message):
     await show_help_message(message)
@@ -182,6 +177,7 @@ async def cmd_statistics2(message: types.Message):
 
 
 async def main():
+    await bot.delete_webhook()
     await create_table()
     await dp.start_polling(bot)
 
